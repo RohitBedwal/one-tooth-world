@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   One tooth World Design Tokens — EDIT COLORS HERE ONLY
+   All Tailwind classes (bg-primary, text-terracotta, etc.)
+   read from these CSS variables. Change a value below and it
+   updates across the entire app.
+   ============================================================ */
+
+:root {
+  /* ---- Brand palette ---- */
+  --color-primary: #4c5941; /* olive green — buttons, brand */
+  --color-primary-light: #5e6a54; /* sage */
+  --color-primary-dark: #3a4532;
+  --color-primary-soft: #7d8674;
+
+  --color-secondary: #dfdAd3; /* warm taupe — secondary surfaces */
+  --color-secondary-dark: #c9c2b8;
+
+  --color-tertiary: #c26649; /* terracotta — sale, accents */
+  --color-tertiary-light: #daa392;
+  --color-tertiary-dark: #a4523a;
+
+  /* ---- Neutrals ---- */
+  --color-background: #ffffff;
+  --color-surface: #ededed; /* light grey cards / fields */
+  --color-surface-soft: #f7f6f4;
+  --color-foreground: #111111;
+  --color-heading: #000000;
+  --color-subtext: #666666;
+  --color-border: #ededed;
+  --color-border-strong: #d4d4d4;
+
+  /* ---- Semantic ---- */
+  --color-sale: #c26649;
+  --color-soldout: #702c37;
+  --color-success: #4c5941;
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #111111;
+
+  /* ---- Typography ---- */
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Fraunces", ui-serif, Georgia, serif;
+
+  /* ---- Layout ---- */
+  --radius-block: 10px; /* cards / image radius (blocks-radius) */
+  --radius-pill: 9999px;
+  --header-height: 120px;
+  --container-max: 1400px;
+}
+
+/* Optional: override brand primary globally via data attribute */
+[data-theme="dark"] {
+  --color-background: #111111;
+  --color-foreground: #f5f5f5;
+  --color-heading: #ffffff;
+  --color-surface: #1c1c1c;
+  --color-border: #2a2a2a;
+}
+
+/* ---- Marquee keyframes ---- */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left var(--marquee-duration, 40s) linear infinite;
+}
+
+/* ---- Utilities ---- */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
